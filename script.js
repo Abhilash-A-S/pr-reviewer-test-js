@@ -36,4 +36,5 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Register attempt:', { name, email });
     alert(`Account created for ${name}!`);
   });
+  console.log('Script loaded and event listeners attached.');
 });
