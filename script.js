@@ -168,3 +168,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 3000);
   }
 });
+console.log("Application Load Testing")
+const abc = 12346789
