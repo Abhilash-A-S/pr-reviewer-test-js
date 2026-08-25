@@ -170,3 +170,116 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 console.log("Application Load Testing")
 const abc = 12346789
+
+// ======================================================
+// PR REVIEWER TEST CASES - PLAIN JAVASCRIPT
+// Keep the existing application code above unchanged.
+// ======================================================
+
+
+// ISSUE 1: Hardcoded API secret
+const apiKey = "sk_test_123456789_super_secret_key";
+
+
+// ISSUE 2: Hardcoded password
+const databasePassword = "Admin@123456";
+
+
+// ISSUE 3: Debugger statement
+function calculateTotal(price, quantity) {
+  debugger;
+
+  return price * quantity;
+}
+
+
+// ISSUE 4: Unsafe DOM injection
+function displayUserMessage(message) {
+  const output = document.getElementById("user-output");
+
+  if (output) {
+    output.innerHTML = message;
+  }
+}
+
+
+// ISSUE 5: Fetch without error/status handling
+async function loadUsers() {
+  const response = await fetch(
+    "https://jsonplaceholder.typicode.com/users"
+  );
+
+  const users = await response.json();
+
+  console.log(users);
+
+  return users;
+}
+
+
+// ISSUE 6: Empty catch / swallowed exception
+function parseConfiguration(value) {
+  try {
+    return JSON.parse(value);
+  } catch (error) {
+    // Error is silently ignored
+  }
+}
+
+
+// ISSUE 7: Loose equality instead of strict equality
+function isAdmin(role) {
+  if (role == 1) {
+    return true;
+  }
+
+  return false;
+}
+
+
+// ISSUE 8: Unreachable code
+function getUserStatus(active) {
+  if (active) {
+    return "ACTIVE";
+
+    console.log("This code is unreachable");
+  }
+
+  return "INACTIVE";
+}
+
+
+// ISSUE 9: Unused function parameter
+function greetUser(name, title) {
+  return `Hello ${name}`;
+}
+
+
+// ISSUE 10: Another unused variable
+const unusedUserCount = 100;
+
+
+// ISSUE 11: Another console statement
+console.log("Plain JavaScript reviewer test");
+
+
+// ISSUE 12: JSON.parse without error handling
+function parseUserData(userData) {
+  return JSON.parse(userData);
+}
+
+
+// ISSUE 13: setInterval started without retaining timer reference
+function startPolling() {
+  setInterval(() => {
+    console.log("Polling...");
+  }, 1000);
+}
+
+
+// ISSUE 14: Global event listener without removal
+function registerResizeListener() {
+  window.addEventListener("resize", () => {
+    console.log("Window resized");
+  });
+}
