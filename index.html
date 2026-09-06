@@ -4,18 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login & Register</title>
-<link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="auth-container">
+    <!-- Toast Message Container -->
+    <div id="toast" class="toast hidden"></div>
+
     <!-- Tab Toggle Header -->
     <div class="tab-header">
-      <button id="loginTabBtn" class="tab-btn active">Sign In</button>
-      <button id="registerTabBtn" class="tab-btn">Sign Up</button>
+      <button id="loginTabBtn" class="tab-btn active" type="button">Sign In</button>
+      <button id="registerTabBtn" class="tab-btn" type="button">Sign Up</button>
     </div>
 
     <!-- Login Form -->
-    <form id="loginForm" class="auth-form active">
+    <form id="loginForm" class="auth-form active" novalidate>
       <h2>Welcome Back</h2>
       <p class="subtitle">Enter your credentials to access your account</p>
 
@@ -26,21 +29,27 @@
 
       <div class="input-group">
         <label for="loginPassword">Password</label>
-        <input type="password" id="loginPassword" placeholder="••••••••" required>
+        <div class="password-wrapper">
+          <input type="password" id="loginPassword" placeholder="••••••••" required>
+          <button type="button" class="toggle-password" data-target="loginPassword">Show</button>
+        </div>
       </div>
 
       <div class="form-options">
         <label class="remember-me">
-          <input type="checkbox"> Remember me
+          <input type="checkbox" id="rememberMe"> Remember me
         </label>
         <a href="#" class="forgot-link">Forgot password?</a>
       </div>
 
-      <button type="submit" class="submit-btn">Sign In</button>
+      <button type="submit" class="submit-btn" id="loginSubmitBtn">
+        <span class="btn-text">Sign In</span>
+        <span class="spinner hidden"></span>
+      </button>
     </form>
 
     <!-- Register Form -->
-    <form id="registerForm" class="auth-form">
+    <form id="registerForm" class="auth-form" novalidate>
       <h2>Create Account</h2>
       <p class="subtitle">Join us today in just a few steps</p>
 
@@ -56,10 +65,30 @@
 
       <div class="input-group">
         <label for="regPassword">Password</label>
-        <input type="password" id="regPassword" placeholder="Minimum 8 characters" minlength="8" required>
+        <div class="password-wrapper">
+          <input type="password" id="regPassword" placeholder="Minimum 8 characters" required>
+          <button type="button" class="toggle-password" data-target="regPassword">Show</button>
+        </div>
+        <!-- Password Strength Meter -->
+        <div class="strength-meter">
+          <div id="strengthBar" class="strength-bar"></div>
+        </div>
+        <span id="strengthText" class="strength-text">Password strength</span>
       </div>
 
-      <button type="submit" class="submit-btn">Create Account</button>
+      <div class="input-group">
+        <label for="regConfirmPassword">Confirm Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="regConfirmPassword" placeholder="Re-enter password" required>
+          <button type="button" class="toggle-password" data-target="regConfirmPassword">Show</button>
+        </div>
+        <span id="matchError" class="field-error hidden">Passwords do not match</span>
+      </div>
+
+      <button type="submit" class="submit-btn" id="regSubmitBtn">
+        <span class="btn-text">Create Account</span>
+        <span class="spinner hidden"></span>
+      </button>
     </form>
   </div>
 
